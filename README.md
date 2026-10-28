@@ -3,216 +3,308 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#164e43">
-  <title>RouteReady | Campus Navigation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RouteReady | Faculty of Syariah and Law</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f3f7f5;
-      color: #183b32;
+      background: #f4f7f5;
+      color: #183c2e;
+      min-height: 100vh;
     }
 
     header {
-      background: #164e43;
+      background: #164e3b;
       color: white;
-      padding: 28px 22px 34px;
+      padding: 28px 20px;
+      text-align: center;
     }
 
-    .brand {
-      font-size: 25px;
+    .logo {
+      font-size: 30px;
       font-weight: bold;
-      margin: 0 0 8px;
-    }
-
-    .tagline {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: #d8eee5;
-    }
-
-    header h2 {
-      margin-top: 30px;
-      font-size: 27px;
-      line-height: 1.25;
-    }
-
-    header p {
-      line-height: 1.6;
-      color: #e0eee8;
-    }
-
-    main {
-      width: 100%;
-      max-width: 600px;
-      padding: 24px 18px 40px;
-      margin: auto;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      font-weight: bold;
-      color: #557267;
       letter-spacing: 1px;
     }
 
-    .room {
-      width: 100%;
+    header p {
+      margin-top: 9px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #d8e9df;
+    }
+
+    main {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .intro h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #62756a;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .destination {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 18px;
-      margin: 14px 0;
-      border: 1px solid #dce8e1;
-      border-radius: 15px;
+      gap: 15px;
+      width: 100%;
       background: white;
-      color: #183b32;
+      border: 1px solid #dce8df;
+      border-radius: 16px;
+      padding: 20px 17px;
+      margin-bottom: 15px;
       text-align: left;
+      color: #183c2e;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(20, 60, 40, 0.05);
+      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .roomIcon {
-      font-size: 26px;
-      background: #e5f1eb;
-      padding: 12px;
-      border-radius: 12px;
+    .destination:active {
+      transform: scale(0.98);
     }
 
-    .roomInfo { flex: 1; }
-
-    .roomInfo strong {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 6px;
+    .destination:hover {
+      border-color: #4c9270;
     }
 
-    .roomInfo small { color: #62756c; }
+    .destination .emoji {
+      font-size: 30px;
+      width: 48px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .destination .details {
+      flex: 1;
+    }
+
+    .destination h2 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .destination p {
+      font-size: 13px;
+      color: #718078;
+      line-height: 1.5;
+    }
 
     .arrow {
       font-size: 24px;
-      color: #164e43;
+      color: #4b8768;
     }
 
-    .room:active { background: #e8f2ec; }
+    #videoPage {
+      display: none;
+    }
 
-    #destinationPage { display: none; }
-
-    .back {
+    .back-button {
+      background: #e0ece4;
+      color: #164e3b;
       border: none;
-      background: #164e43;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 9px;
+      padding: 12px 18px;
+      border-radius: 10px;
       font-size: 15px;
-      margin-bottom: 20px;
+      font-weight: bold;
       cursor: pointer;
+      margin-bottom: 22px;
     }
 
-    .placeholder {
-      background: white;
-      border: 1px solid #dce8e1;
-      border-radius: 16px;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 20px;
+    .video-title {
+      font-size: 23px;
+      line-height: 1.4;
+      margin-bottom: 8px;
     }
 
-    .placeholderIcon { font-size: 45px; }
-
-    .placeholder p {
+    .video-description {
+      color: #62756a;
       line-height: 1.6;
-      color: #62756c;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #10271d;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .tip {
+      background: #e6f0e8;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 20px;
+      color: #315d45;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     footer {
       text-align: center;
       padding: 20px;
+      color: #829087;
       font-size: 12px;
-      color: #62756c;
+    }
+
+    @media (min-width: 600px) {
+      header {
+        padding: 35px 20px;
+      }
+
+      main {
+        padding-top: 38px;
+      }
+
+      .destination {
+        padding: 23px;
+      }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="brand">⌖ RouteReady</div>
-    <div class="tagline">SCAN. SELECT. FOLLOW.</div>
-    <h2>Find your way around campus.</h2>
-    <p>Choose your destination and get ready to find your route.</p>
+    <div class="logo">⌖ RouteReady</div>
+    <p>FACULTY OF SYARIAH AND LAW</p>
+    <p>Find your destination. Follow the route.</p>
   </header>
 
   <main>
-    <section id="menuPage">
-      <div class="eyebrow">YOUR CAMPUS GUIDE</div>
-      <h2>Where do you want to go?</h2>
-      <p>Select a destination to explore the route.</p>
+    <section id="homePage">
+      <div class="intro">
+        <h1>Where would you like to go?</h1>
+        <p>Select your destination below to watch the route video.</p>
+      </div>
 
-      <button class="room" onclick="openDestination('Tutorial Room')">
-        <span class="roomIcon">📚</span>
-        <span class="roomInfo">
-          <strong>Tutorial Room</strong>
-          <small>Find your classroom</small>
+      <button class="destination" onclick="openVideo('office')">
+        <span class="emoji">🏢</span>
+        <span class="details">
+          <h2>Administrative Office</h2>
+          <p>Find the way to the administrative office.</p>
         </span>
         <span class="arrow">›</span>
       </button>
 
-      <button class="room" onclick="openDestination('Lecture Hall')">
-        <span class="roomIcon">🎓</span>
-        <span class="roomInfo">
-          <strong>Lecture Hall</strong>
-          <small>Find your lecture venue</small>
+      <button class="destination" onclick="openVideo('dks')">
+        <span class="emoji">🎓</span>
+        <span class="details">
+          <h2>Medium Lecture Halls (DKS)</h2>
+          <p>DKS 1.1 – DKS 1.4</p>
         </span>
         <span class="arrow">›</span>
       </button>
 
-      <button class="room" onclick="openDestination('Faculty Office')">
-        <span class="roomIcon">🏢</span>
-        <span class="roomInfo">
-          <strong>Faculty Office</strong>
-          <small>Find the faculty office</small>
+      <button class="destination" onclick="openVideo('bts')">
+        <span class="emoji">📚</span>
+        <span class="details">
+          <h2>Medium Tutorial Rooms (BTS)</h2>
+          <p>BTS 1.1 – BTS 1.7</p>
         </span>
         <span class="arrow">›</span>
       </button>
     </section>
 
-    <section id="destinationPage">
-      <button class="back" onclick="goBack()">
-        ← Back to destinations
-      </button>
+    <section id="videoPage">
+      <button class="back-button" onclick="goBack()">← Back</button>
 
-      <div class="eyebrow">YOUR DESTINATION</div>
-      <h2 id="destinationTitle">Tutorial Room</h2>
+      <h1 class="video-title" id="videoTitle"></h1>
+      <p class="video-description" id="videoDescription"></p>
 
-      <div class="placeholder">
-        <div class="placeholderIcon">🎬</div>
-        <h3>Route video coming soon</h3>
-        <p>
-          The walking route video for this destination
-          will be available here.
-        </p>
+      <div class="video-container">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="RouteReady navigation video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="tip">
+        <strong>Navigation Tip</strong><br>
+        Watch the route video carefully to help you find your destination.
       </div>
     </section>
   </main>
 
   <footer>
-    RouteReady · Campus navigation made easier
+    RouteReady · Faculty of Syariah and Law
   </footer>
 
   <script>
-    function openDestination(name) {
-      document.getElementById("menuPage").style.display = "none";
-      document.getElementById("destinationPage").style.display = "block";
-      document.getElementById("destinationTitle").textContent = name;
+    const destinations = {
+      office: {
+        title: "Administrative Office",
+        description: "Watch the route video to find the administrative office.",
+        video: "Im4z1pXZ60g"
+      },
+      dks: {
+        title: "Medium Lecture Halls (DKS)",
+        description: "Route video for DKS 1.1 to DKS 1.4.",
+        video: "Zne9Z8JADi4"
+      },
+      bts: {
+        title: "Medium Tutorial Rooms (BTS)",
+        description: "Route video for BTS 1.1 to BTS 1.7.",
+        video: "7fZbrUTcdME"
+      }
+    };
+
+    function openVideo(destination) {
+      const item = destinations[destination];
+
+      document.getElementById("homePage").style.display = "none";
+      document.getElementById("videoPage").style.display = "block";
+
+      document.getElementById("videoTitle").textContent = item.title;
+      document.getElementById("videoDescription").textContent =
+        item.description;
+
+      document.getElementById("videoFrame").src =
+        "https://www.youtube-nocookie.com/embed/" +
+        item.video + "?rel=0";
+
       window.scrollTo(0, 0);
     }
 
     function goBack() {
-      document.getElementById("destinationPage").style.display = "none";
-      document.getElementById("menuPage").style.display = "block";
+      document.getElementById("videoFrame").src = "";
+      document.getElementById("videoPage").style.display = "none";
+      document.getElementById("homePage").style.display = "block";
+
       window.scrollTo(0, 0);
     }
   </script>
