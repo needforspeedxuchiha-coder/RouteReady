@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -28,9 +27,10 @@
     }
 
     .logo {
-      font-size: 30px;
-      font-weight: bold;
-      letter-spacing: 1px;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ffffff;
     }
 
     header p {
